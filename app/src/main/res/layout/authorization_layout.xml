@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark">
+
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/loginBox"
+        style="@style/TextFieldBoxes"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="42dp"
+        app:labelText="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/loginEdit"
+            style="@style/extendedEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:prefix="+7"
+            app:prefixTextColor="@color/colorEditText"
+            android:inputType="phone" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/passwordBox"
+        style="@style/TextFieldBoxes"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBox"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        app:endIcon="@drawable/eye"
+        app:helperTextColor="@color/colorEditText"
+        app:labelText="@string/Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBox">
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/passwordEdit"
+            style="@style/extendedEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <Button
+        android:id="@+id/signIn"
+        style="@style/ButtonLight"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/sign_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/signInProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/signIn"
+        android:layout_alignTop="@+id/signIn"
+        android:layout_alignEnd="@+id/signIn"
+        android:layout_alignBottom="@+id/signIn"
+        android:translationZ="2dp"/>
+
+
+</RelativeLayout>
