@@ -10,18 +10,11 @@
     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
         android:id="@+id/loginBox"
         style="@style/TextFieldBoxes"
-        android:layout_width="328dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="41dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="42dp"
-        app:labelText="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginHorizontal="16dp"
+        app:labelText="@string/login">
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/loginEdit"
@@ -37,56 +30,43 @@
     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
         android:id="@+id/passwordBox"
         style="@style/TextFieldBoxes"
-        android:layout_width="328dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginBox"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="41dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="42dp"
-        app:endIcon="@drawable/eye"
+        android:layout_marginHorizontal="16dp"
         app:helperTextColor="@color/colorEditText"
         app:labelText="@string/Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBox">
+        >
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
             android:id="@+id/passwordEdit"
             style="@style/extendedEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content" />
 
     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
     <Button
         android:id="@+id/signIn"
         style="@style/ButtonLight"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="44dp"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="16dp"
-        android:text="@string/sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/sign_in"/>
 
-    <ProgressBar
+    <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/signInProgress"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignStart="@+id/signIn"
         android:layout_alignTop="@+id/signIn"
         android:layout_alignEnd="@+id/signIn"
         android:layout_alignBottom="@+id/signIn"
-        android:translationZ="2dp"/>
-
+        android:translationZ="5dp"/>
 
 </RelativeLayout>
