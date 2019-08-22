@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundDark">
+
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/loginBox"
+        style="@style/TextFieldBoxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginHorizontal="16dp"
+        app:labelText="@string/login">
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/loginEdit"
+            style="@style/extendedEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:prefix="+7"
+            app:prefixTextColor="@color/colorEditText"
+            android:inputType="phone" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/passwordBox"
+        style="@style/TextFieldBoxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBox"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:helperTextColor="@color/colorEditText"
+        app:labelText="@string/Password"
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/passwordEdit"
+            style="@style/extendedEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <Button
+        android:id="@+id/signIn"
+        style="@style/ButtonLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/sign_in"/>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/signInProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@+id/signIn"
+        android:layout_alignTop="@+id/signIn"
+        android:layout_alignEnd="@+id/signIn"
+        android:layout_alignBottom="@+id/signIn"
+        android:translationZ="5dp"/>
+
+</RelativeLayout>

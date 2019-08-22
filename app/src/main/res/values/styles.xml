@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Theme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimaryDark">@color/backgroundDark</item>
+        <item name="android:colorBackground">@color/backgroundDark</item>
+    </style>
+
+    <style name="ButtonLight" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/colorBTNText</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextFieldBoxes">
+        <item name="panelBackgroundColor">@color/colorTextFieldPanel</item>
+        <item name="primaryColor">@color/colorPrimary</item>
+        <item name="secondaryColor">@color/colorEditText</item>
+    </style>
+
+    <style name="extendedEditText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorEditText</item>
+        <item name="android:textColorHint">@color/colorEditText</item>
+    </style>
+
 </resources>

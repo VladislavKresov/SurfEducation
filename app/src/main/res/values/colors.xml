@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#1EF0D7</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="backgroundDark">#23213F</color>
+    <color name="colorBTNPressed">#15b3a0</color>
+    <color name="colorBTNText">#23213F</color>
+    <color name="colorEditText">#8AFFFFFF</color>
+    <color name="colorTextFieldPanel">#302d57</color>
 </resources>
