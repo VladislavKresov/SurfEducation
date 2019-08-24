@@ -1,4 +1,4 @@
-package com.example.surf_education;
+package com.example.surf_education.activities;
 
 
 import android.os.Bundle;
@@ -7,15 +7,21 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.surf_education.R;
+import com.example.surf_education.network.AuthorizationRequest;
+import com.example.surf_education.network.NetworkService;
+import com.example.surf_education.network.MemesResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
-
-import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
-import static android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
 
 public class AuthorizationActivity extends AppCompatActivity {
 
@@ -98,6 +104,7 @@ public class AuthorizationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 validateFieldsAndLogin();
+                signInRequest(requestPreparation());
             }
         });
 
@@ -108,6 +115,13 @@ public class AuthorizationActivity extends AppCompatActivity {
                 buildPassword();
             }
         });
+    }
+
+    private AuthorizationRequest requestPreparation(){
+        AuthorizationRequest request = new AuthorizationRequest();
+        request.setLogin(loginEdit.getText().toString());
+        request.setPassword(passwordEdit.getText().toString());
+        return request;
     }
 
     private void buildPassword() {
@@ -122,6 +136,47 @@ public class AuthorizationActivity extends AppCompatActivity {
             passwordEdit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }
 
+    }
+
+    private void signInRequest(AuthorizationRequest authorizationRequest){
+        NetworkService.getInstance()
+                .getJSONApi()
+                .postAuthorizationRequest(authorizationRequest)
+                .enqueue(new Callback<AuthorizationRequest>() {
+                    @Override
+                    public void onResponse(Call<AuthorizationRequest> call, Response<AuthorizationRequest> response) {
+                        AuthorizationRequest authorizationRequest = response.body();
+                        Toast.makeText(AuthorizationActivity.this, "Welcome, "+ authorizationRequest.getLogin(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<AuthorizationRequest> call, Throwable t) {
+                        Toast.makeText(AuthorizationActivity.this, "Something wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+
+    private void getMemes(){
+        NetworkService.getInstance()
+                .getJSONApi()
+                .getPost()
+                .enqueue(new Callback<MemesResponse>() {
+                    @Override
+                    public void onResponse(Call<MemesResponse> call, Response<MemesResponse> response) {
+                        MemesResponse memesResponse = response.body();
+
+                        Toast.makeText(AuthorizationActivity.this, memesResponse.getMemeTitle(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<MemesResponse> call, Throwable t) {
+                        Toast.makeText(AuthorizationActivity.this, "Something wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 

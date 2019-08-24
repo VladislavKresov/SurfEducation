@@ -1,10 +1,12 @@
-package com.example.surf_education;
+package com.example.surf_education.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.surf_education.R;
 
 public class LoaderActivity extends AppCompatActivity {
 
