@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -28,6 +29,7 @@ import com.example.surf_education.network.ConnectionDetector;
 import com.example.surf_education.network.NetworkService;
 import com.example.surf_education.network.MemesResponse;
 import com.example.surf_education.network.UserInfo;
+import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,9 +49,6 @@ public class AuthorizationActivity extends FragmentActivity {
     public boolean isPasswordVisible;
     private SharedPreferences user;
     private final String APP_PREFERENCES = "USER";
-    private NotifyFragment mNotifyFragment;
-    private FragmentManager manager;
-    private FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +77,6 @@ public class AuthorizationActivity extends FragmentActivity {
 
     private void initVars() {
         isPasswordVisible = false;
-        mNotifyFragment = new NotifyFragment();
-        manager = getSupportFragmentManager();
 
     }
 
@@ -195,22 +192,20 @@ public class AuthorizationActivity extends FragmentActivity {
 
         boolean isConnected =  new ConnectionDetector(this).isConnected();
 
+        String message;
+
         if(isConnected)
-            showError(getString(R.string.uncorrect_input));
+            message = getString(R.string.uncorrect_input);
         else
-            showError(getString(R.string.connection_lost));
+            message = getString(R.string.connection_lost);
 
-    }
+        Snackbar mSnackbar = Snackbar.make( signIn ,message,Snackbar.LENGTH_LONG)
+                .setAction("Action",null);
 
-    private void showError(String error){
+        View snackbarView = mSnackbar.getView();
+        snackbarView.setBackgroundColor(getResources().getColor(R.color.colorError));
+        mSnackbar.show();
 
-        transaction = manager.beginTransaction();
-
-        //mNotifyFragment.setNotificationText(error);
-
-        transaction.add(R.id.notifyFragmentContainer,mNotifyFragment);
-
-        transaction.commit();
     }
 
     private void nextScreen(){
