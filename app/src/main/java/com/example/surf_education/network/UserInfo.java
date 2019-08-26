@@ -7,7 +7,7 @@ public class UserInfo {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private String id;
 
     @SerializedName("username")
     @Expose
@@ -26,11 +26,11 @@ public class UserInfo {
     private String userDescription;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String  id) {
         this.id = id;
     }
 

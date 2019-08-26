@@ -2,6 +2,8 @@ package com.example.surf_education.Data;
 
 import android.content.SharedPreferences;
 
+import java.util.Map;
+
 public class User {
 
     private boolean isSign;
@@ -70,6 +72,7 @@ public class User {
     }
 
     public static String pullData(String key){
+
         if(user.contains(key)) {
             return user.getString(key, "");
         }

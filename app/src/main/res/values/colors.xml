@@ -7,5 +7,7 @@
     <color name="colorBTNPressed">#15b3a0</color>
     <color name="colorBTNText">#23213F</color>
     <color name="colorEditText">#8AFFFFFF</color>
+    <color name="colorTextDefault">#FEFEFE</color>
     <color name="colorTextFieldPanel">#302d57</color>
+    <color name="colorError">#FF575D</color>
 </resources>

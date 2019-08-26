@@ -3,4 +3,6 @@
     <string name="login">Логин</string>
     <string name="Password">Пароль</string>
     <string name="sign_in">Войти</string>
+    <string name="connection_lost">Отсутствует интернет-соединение.<br/>Попробуйте позже.</string>
+    <string name="uncorrect_input">Вы ввели неверные данные.<br/>Попробуйте еще раз.</string>
 </resources>
