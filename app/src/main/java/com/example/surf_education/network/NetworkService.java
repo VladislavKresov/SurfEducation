@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkService {
 
     private static NetworkService Instance;
-    private static final String BASE_URL = "http://demo3161256.mockable.io/";
+    private static final String BASE_URL = "https://demo3161256.mockable.io/";
     private Retrofit mRetrofit;
 
 

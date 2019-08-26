@@ -15,8 +15,8 @@ public interface JSONPlaceHolderApi {
     @GET("/memes")
     public Call<MemesResponse> getPost();
 
-    @POST()
-    public Call<AuthorizationRequest> postAuthorizationRequest(@Body AuthorizationRequest authorizationRequest);
+    @POST("/auth/login")
+    public Call<AuthResponse> postAuthorizationRequest(@Body AuthorizationRequest authorizationRequest);
 
 
 }
