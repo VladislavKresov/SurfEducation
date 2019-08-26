@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -65,6 +66,22 @@ public class AuthorizationActivity extends FragmentActivity {
         buildPassword();    //Установка подсказки, endIcon, видимость пароля
         buildSignIn();      //Настройка кнопки
         initListeners();    //Установка слушателей
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(!savedInstanceState.isEmpty()){
+            loginEdit.setText(savedInstanceState.get("login").toString());
+            passwordEdit.setText(savedInstanceState.get("password").toString());
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("login", loginEdit.getText().toString());
+        outState.putString("password", passwordEdit.getText().toString());
     }
 
     private void initUser(UserInfo userInfo) {
