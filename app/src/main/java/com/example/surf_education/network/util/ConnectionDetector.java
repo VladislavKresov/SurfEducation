@@ -1,4 +1,4 @@
-package com.example.surf_education.network;
+package com.example.surf_education.network.util;
 
 import android.app.Service;
 import android.content.Context;

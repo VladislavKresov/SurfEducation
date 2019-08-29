@@ -1,15 +1,12 @@
-package com.example.surf_education.network;
+package com.example.surf_education.network.request;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AuthorizationRequest {
     @SerializedName("login")
-    @Expose
     private String login;
 
     @SerializedName("password")
-    @Expose
     private String password;
 
     public String getLogin() {

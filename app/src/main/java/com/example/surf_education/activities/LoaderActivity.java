@@ -10,6 +10,8 @@ import com.example.surf_education.R;
 
 public class LoaderActivity extends AppCompatActivity {
 
+    private static final int DELAY = 300;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,6 @@ public class LoaderActivity extends AppCompatActivity {
                 startActivity(new Intent(LoaderActivity.this, AuthorizationActivity.class));
                 LoaderActivity.this.finish();
             }
-        }, 300); //specify the number of milliseconds
+        }, DELAY); //specify the number of milliseconds
     }
 }

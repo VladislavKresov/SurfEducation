@@ -32,4 +32,9 @@
         <item name="android:textColorHint">@color/colorEditText</item>
     </style>
 
+    <style name="textMemeCellTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorTextDefault</item>
+    </style>
+
 </resources>

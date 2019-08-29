@@ -4,32 +4,24 @@ package com.example.surf_education.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.surf_education.Data.User;
+import com.example.surf_education.data.SharedPrefUtil;
 import com.example.surf_education.R;
-import com.example.surf_education.network.AuthResponse;
-import com.example.surf_education.network.AuthorizationRequest;
-import com.example.surf_education.network.ConnectionDetector;
-import com.example.surf_education.network.NetworkService;
-import com.example.surf_education.network.MemesResponse;
-import com.example.surf_education.network.UserInfo;
+import com.example.surf_education.data.UserStorage;
+import com.example.surf_education.network.response.AuthResponse;
+import com.example.surf_education.network.request.AuthorizationRequest;
+import com.example.surf_education.network.util.ConnectionDetector;
+import com.example.surf_education.network.util.NetworkService;
+import com.example.surf_education.network.response.UserInfo;
 import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
@@ -39,7 +31,6 @@ import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class AuthorizationActivity extends FragmentActivity {
-
 
     public ProgressBar progressBar;
     public Button signIn;
@@ -57,9 +48,7 @@ public class AuthorizationActivity extends FragmentActivity {
         setContentView(R.layout.activity_authorization);
 
         user = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        User.setInstance(user);
-
-
+        SharedPrefUtil.setInstance(user);
 
         initVars();         //инициализация переменных
         initViews();        //инициализация Views
@@ -85,11 +74,11 @@ public class AuthorizationActivity extends FragmentActivity {
     }
 
     private void initUser(UserInfo userInfo) {
-        User.pushData("id", userInfo.getId());
-        User.pushData("userName", userInfo.getUserName());
-        User.pushData("userFirstName", userInfo.getFirstName());
-        User.pushData("userLastName", userInfo.getLastName());
-        User.pushData("userDescription", userInfo.getUserDescription());
+        UserStorage.saveUserData(UserStorage.KEY_USER_ID, userInfo.getId());
+        UserStorage.saveUserData(UserStorage.KEY_USER_NAME, userInfo.getUserName());
+        UserStorage.saveUserData(UserStorage.KEY_USER_FIRST_NAME, userInfo.getFirstName());
+        UserStorage.saveUserData(UserStorage.KEY_USER_LAST_NAME, userInfo.getLastName());
+        UserStorage.saveUserData(UserStorage.KEY_USER_DESCRIPTION, userInfo.getUserDescription());
     }
 
     private void initVars() {
@@ -106,35 +95,41 @@ public class AuthorizationActivity extends FragmentActivity {
         loginBox = findViewById(R.id.loginBox);
     }
 
-    private void buildSignIn() {
+    private void showProgress(){
+        progressBar.setVisibility(View.VISIBLE);
+    }
 
+    private void hideProgress(){
         progressBar.setVisibility(View.INVISIBLE);
+    }
 
+    private void buildSignIn() {
+        hideProgress();
     }
 
     //проверка полей
-    public void validateFieldsAndLogin(){
+    private void validateFieldsAndLogin(){
         if(loginEdit.getText().toString().length() == 10 && passwordEdit.getText().toString().length() >= 6){
             //Изменяем кнопку, переходим на новый layout, если поля корректны
             signIn.setText("");
-            progressBar.setVisibility(View.VISIBLE);
+            showProgress();
 
             signInRequest(requestPreparation());
 
         } else {
             if (loginEdit.getText().toString().equals("")) {
-                loginBox.setError("Поле не может быть пустым", false);
+                loginBox.setError(getString(R.string.empty_field), false);
             } else {
                 if (loginEdit.getText().toString().length() != 10) {
-                    loginBox.setError("Номер телефона содержит 10 цифр", false);
+                    loginBox.setError(getString(R.string.uncorrect_phone), false);
                 }
             }
 
             if (passwordEdit.getText().toString().equals("")) {
-                passwordBox.setError("Поле не может быть пустым", false);
+                passwordBox.setError(getString(R.string.empty_field), false);
             } else {
                 if (passwordEdit.getText().toString().length() < 6)
-                    passwordBox.setError("Пароль должен состоять из не менее 6 символов", false);
+                    passwordBox.setError(getString(R.string.password_is), false);
             }
         }
     }
@@ -166,7 +161,7 @@ public class AuthorizationActivity extends FragmentActivity {
 
     private void buildPassword() {
 
-        passwordBox.setHelperText("Пароль должен содержать 6 символов");
+        passwordBox.setHelperText(getText(R.string.password_hint).toString());
 
         if(isPasswordVisible) {
             passwordBox.setEndIcon(R.drawable.closed_eye);
@@ -188,7 +183,7 @@ public class AuthorizationActivity extends FragmentActivity {
                         AuthResponse authResponse = response.body();
 
                         signIn.setText(R.string.sign_in);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        hideProgress();
 
                         initUser(authResponse.getUserInfo());
                         nextScreen();
@@ -198,7 +193,7 @@ public class AuthorizationActivity extends FragmentActivity {
                     @Override
                     public void onFailure(Call<AuthResponse> call, Throwable t) {
                         signIn.setText(R.string.sign_in);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        hideProgress();
 
                         checkError();
                     }

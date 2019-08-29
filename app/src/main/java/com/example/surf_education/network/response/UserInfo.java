@@ -1,28 +1,22 @@
-package com.example.surf_education.network;
+package com.example.surf_education.network.response;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserInfo {
 
     @SerializedName("id")
-    @Expose
     private String id;
 
     @SerializedName("username")
-    @Expose
     private String userName;
 
     @SerializedName("firstName")
-    @Expose
     private String firstName;
 
     @SerializedName("lastName")
-    @Expose
     private String lastName;
 
     @SerializedName("userDescription")
-    @Expose
     private String userDescription;
 
 

@@ -1,16 +1,13 @@
-package com.example.surf_education.network;
+package com.example.surf_education.network.response;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AuthResponse {
 
     @SerializedName("accessToken")
-    @Expose
     private String accsessToken;
 
     @SerializedName("userInfo")
-    @Expose
     private UserInfo mUserInfo;
 
     public String getAccsessToken() {

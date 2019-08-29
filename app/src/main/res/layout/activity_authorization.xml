@@ -37,7 +37,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
         app:helperTextColor="@color/colorEditText"
-        app:labelText="@string/Password"
+        app:labelText="@string/password"
         >
 
         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
@@ -68,13 +68,8 @@
         android:layout_alignTop="@+id/signIn"
         android:layout_alignEnd="@+id/signIn"
         android:layout_alignBottom="@+id/signIn"
-        android:translationZ="5dp"/>
-
-    <FrameLayout
-        android:id="@+id/notifyFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:translationZ="5dp"
         />
+
 
 </RelativeLayout>

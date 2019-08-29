@@ -36,7 +36,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp"
             app:helperTextColor="@color/colorEditText"
-            app:labelText="@string/Password"
+            app:labelText="@string/password"
             >
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText

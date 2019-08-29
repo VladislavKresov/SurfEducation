@@ -1,4 +1,6 @@
-package com.example.surf_education.network;
+package com.example.surf_education.network.util;
+
+import android.util.Log;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -13,16 +15,19 @@ public class NetworkService {
 
 
     private NetworkService(){
-        /////////////////////////////////////////////////////////////////////////
+        /*
+         * отображение всех запросов в логах
+         */
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                                                                            // Все запросы отображаются в ЛОГАХ
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor);
-        /////////////////////////////////////////////////////////////////////////
 
 
-        mRetrofit = new Retrofit.Builder()                              //Строим Ретрофит
+        /*
+         * Строим Ретрофит
+         */
+        mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

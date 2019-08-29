@@ -10,4 +10,6 @@
     <color name="colorTextDefault">#FEFEFE</color>
     <color name="colorTextFieldPanel">#302d57</color>
     <color name="colorError">#FF575D</color>
+    <color name="colorBotomBar">#12102B</color>
+    <color name="colorToolBar">#312F51</color>
 </resources>

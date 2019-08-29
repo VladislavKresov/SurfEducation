@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Surf-Education</string>
     <string name="login">Логин</string>
-    <string name="Password">Пароль</string>
+    <string name="password">Пароль</string>
     <string name="sign_in">Войти</string>
+    <string name="password_hint">Пароль должен содержать 6 символов</string>
+    <string name="empty_field">Поле не может быть пустым</string>
+    <string name="uncorrect_phone">Номер телефона содержит 10 цифр</string>
+    <string name="password_is">Пароль должен состоять из не менее 6 символов</string>
     <string name="connection_lost">Отсутствует интернет-соединение.<br/>Попробуйте позже.</string>
     <string name="uncorrect_input">Вы ввели неверные данные.<br/>Попробуйте еще раз.</string>
+    <string name="popular_memes">Популярные мемы</string>
+    <string name="load_error">Не удалось обновить ленту.<br/>Обновите экран и попробуйте позже.</string>
 </resources>
